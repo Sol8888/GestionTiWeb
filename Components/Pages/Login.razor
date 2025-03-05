@@ -11,7 +11,7 @@
 
 <div>
     <label>Usuario:</label>
-    <input @bind="username" type="text" placeholder="Ingrese usuario" />
+    <input @bind="usuario" type="text" placeholder="Ingrese usuario" />
 </div>
 
 <div>
@@ -19,23 +19,24 @@
     <input @bind="password" type="password" placeholder="Ingrese contraseña" />
 </div>
 
-<button @onclick="LoginUser">Ingresar</button>
+<button @onclick="()=> LoginUser()">Ingresar</button>
 
 @code {
-    private string username = "";
+    private string usuario = "";
     private string password = "";
     private string errorMessage = "";
 
     private void LoginUser()
     {
-        if (username == "admin" && password == "1234") // Simulación de autenticación
+        if (usuario == "1" && password == "1") 
         {
             errorMessage = "";
-            Navigation.NavigateTo("/ counter", forceLoad: true); // Redirige a la página principal
+            Navigation.NavigateTo("/counter"); 
         }
         else
         {
             errorMessage = "Usuario o contraseña incorrectos";
+            StateHasChanged();
         }
     }
 }
