@@ -1,0 +1,42 @@
+﻿@page "/login"
+@inject NavigationManager Navigation
+<PageTitle>Login</PageTitle>
+
+<h3>Login</h3>
+
+@if (!string.IsNullOrEmpty(errorMessage))
+{
+    <p style="color: red;">@errorMessage</p>
+}
+
+<div>
+    <label>Usuario:</label>
+    <input @bind="username" type="text" placeholder="Ingrese usuario" />
+</div>
+
+<div>
+    <label>Contraseña:</label>
+    <input @bind="password" type="password" placeholder="Ingrese contraseña" />
+</div>
+
+<button @onclick="LoginUser">Ingresar</button>
+
+@code {
+    private string username = "";
+    private string password = "";
+    private string errorMessage = "";
+
+    private void LoginUser()
+    {
+        if (username == "admin" && password == "1234") // Simulación de autenticación
+        {
+            errorMessage = "";
+            Navigation.NavigateTo("/ counter", forceLoad: true); // Redirige a la página principal
+        }
+        else
+        {
+            errorMessage = "Usuario o contraseña incorrectos";
+        }
+    }
+}
+
