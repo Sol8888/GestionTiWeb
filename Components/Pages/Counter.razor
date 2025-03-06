@@ -1,5 +1,7 @@
 ﻿@page "/counter"
 @rendermode InteractiveServer
+@inject NavigationManager Navigation
+
 
 <PageTitle>Counter</PageTitle>
 
@@ -8,6 +10,7 @@
 <p role="status">Current count: @currentCount</p>
 
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+<button class="btn btn-primary" @onclick="IrAPrueba">Ir a prueba</button>
 
 @code {
     private int currentCount = 0;
@@ -16,4 +19,10 @@
     {
         currentCount++;
     }
+
+    private void IrAPrueba()
+    {
+        Navigation.NavigateTo("/prueba");
+    }
+
 }

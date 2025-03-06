@@ -1,0 +1,15 @@
+﻿@page "/prueba"
+@rendermode InteractiveServer
+@inject NavigationManager Navigation
+
+<PageTitle>Prueba</PageTitle>
+<h3>Prueba</h3>
+
+<button class="btn btn-primary" @onclick="IrACounter">Aplastame :)</button>
+
+
+@code {
+	private void IrACounter(){
+		Navigation.NavigateTo("/counter");
+	}
+}

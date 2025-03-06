@@ -1,0 +1,51 @@
+﻿@page "/login"
+@rendermode InteractiveServer
+@inject NavigationManager Navigation
+
+<PageTitle>Prueba</PageTitle>
+<h3>Login</h3>
+
+<div class="container d-flex justify-content-center align-items-center vh-50">
+    <div class="card p-1 shadow-lg" style="width: 500px;">
+        <h3 class="text-center mb-3">Iniciar Sesión</h3>
+        @if (!string.IsNullOrEmpty(error))
+        {
+            <p style="color: red;">@error</p>
+        }
+        <div class="mb-3">
+            <label class ="form-label">Usuario:</label>
+            <input @bind="usuario" type="text" class="form-control" placeholder="Ingrese su usuario" />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Contraseña:</label>
+            <input @bind="contra" type="text" class="form-control"  placeholder="Ingrese su contraseña" />
+        </div>
+
+        <button class="btn btn-primary" @onclick="IrAPrueba">Ir a prueba</button>
+    </div>
+</div>
+
+
+@code {
+    private string usuario = "";
+    private string contra = "";
+    private string error = "";
+
+    private void IrAPrueba()
+    {
+        if (usuario=="1" && contra=="2")
+        {
+            error = "";
+            Navigation.NavigateTo("/prueba");
+
+        } else
+        {
+            error = "Incorrecto, no te puedes ir";
+
+        }
+        
+
+    }
+
+}
